@@ -9,6 +9,17 @@
         android:orientation="vertical"
         android:padding="30dp">
 
+
+        <ImageButton
+            android:id="@+id/btnReturnToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
         <TextView
             android:id="@+id/registerTitle"
             android:layout_width="match_parent"
@@ -27,7 +38,7 @@
             android:layout_marginTop="50dp"
             android:background="@drawable/edittext_border"
             android:gravity="top|start"
-            android:hint="@string/username"
+            android:text="@string/username"
             android:inputType="text"
             android:textColorHint="#000000"
             android:textSize="17sp"

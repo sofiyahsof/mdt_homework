@@ -44,8 +44,6 @@ class LoginActivity : AppCompatActivity() {
                     val token = response.body()?.token
                     Log.d("LoginActivity", "JWT Token: $token")
 
-                    // Now you can use the token for subsequent requests
-                    // For example, call another API endpoint with the token
                 } else {
                     Log.e("LoginActivity", "Login failed. Response: ${response.errorBody()}")
                 }
