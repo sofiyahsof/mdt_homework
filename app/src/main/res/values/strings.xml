@@ -9,4 +9,9 @@
     <string name="register">Register</string>
     <string name="transfer">Transfer</string>
     <string name="amount">Amount</string>
+    <string name="you_have">You have</string>
+    <string name="account_no">Account No</string>
+    <string name="account_holder">Account Holder</string>
+    <string name="your_transaction_history">Your transaction history</string>
+    <string name="make_transfer">Make Transfer</string>
 </resources>
