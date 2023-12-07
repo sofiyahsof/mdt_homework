@@ -1,31 +1,45 @@
 package com.example.mdthomework
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.mdthomework.databinding.FragmentLoginPageBinding
+import com.example.mdthomework.network.ApiService
+import com.example.mdthomework.network.LoginRequest
+import com.example.mdthomework.network.LoginResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginPageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginPageFragment : Fragment() {
+
+    private lateinit var binding: FragmentLoginPageBinding
+    private lateinit var apiService: ApiService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentLoginPageBinding.inflate(inflater, container, false)
+        binding = FragmentLoginPageBinding.inflate(inflater, container, false)
+
+        // Create a Retrofit instance
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://green-thumb-64168.uc.r.appspot.com")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        // Create an instance of the ApiService interface
+        apiService = retrofit.create(ApiService::class.java)
 
         /* Navigates to the dashboard when login button is clicked */
         binding.buttonLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_loginPageFragment_to_dashboardFragment)
+            performLogin()
         }
 
         /* Navigates to the Register page when register button is clicked */
@@ -35,4 +49,47 @@ class LoginPageFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun performLogin() {
+        val username = binding.editTextUsername.text.toString()
+        val password = binding.editTextPassword.text.toString()
+
+        // Create a LoginRequest object
+        val loginRequest = LoginRequest(username, password)
+
+        // Call the login API using Retrofit
+        val call = apiService.login(loginRequest)
+
+        call.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful) {
+                    // Successfully logged in
+                    val token = response.body()?.token
+
+                    // Save the token for subsequent requests
+                    (activity as? MainActivity)?.saveToken(token)
+
+                    // Navigate to the dashboard
+                    findNavController().navigate(R.id.action_loginPageFragment_to_dashboardFragment)
+                } else {
+                    // Handle unsuccessful response
+                    Toast.makeText(
+                        requireContext(),
+                        "Login failed. Please check your credentials.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                // Handle network failure
+                Toast.makeText(
+                    requireContext(),
+                    "Network error. Please try again.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+    }
 }
+
