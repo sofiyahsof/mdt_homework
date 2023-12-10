@@ -1,4 +1,4 @@
-package com.example.mdthomework
+package com.example.mdthomework.dashboard
 
 import android.util.Log
 import androidx.lifecycle.LiveData

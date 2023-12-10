@@ -73,11 +73,11 @@ class LoginPageFragment : Fragment() {
                     findNavController().navigate(R.id.action_loginPageFragment_to_dashboardFragment)
                 } else {
                     // Handle unsuccessful response
-                    Toast.makeText(
-                        requireContext(),
-                        "Login failed. Please check your credentials.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    val errorMessage = "Incorrect username or password."
+
+                    // Show the error message at the bottom of the box
+                    binding.textErrorMessage.text = errorMessage
+                    binding.textErrorMessage.visibility = View.VISIBLE
                 }
             }
 

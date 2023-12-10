@@ -1,4 +1,4 @@
-package com.example.mdthomework
+package com.example.mdthomework.dashboard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.mdthomework.R
 import com.example.mdthomework.databinding.FragmentDashboardBinding
 import com.example.mdthomework.network.Transaction
 
@@ -24,7 +25,9 @@ class DashboardFragment : Fragment() {
     ): View? {
         val binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))
+            .get(DashboardViewModel::class.java)
+
 
         // Observe balance changes
         viewModel.balance.observe(viewLifecycleOwner) { balanceResponse ->
