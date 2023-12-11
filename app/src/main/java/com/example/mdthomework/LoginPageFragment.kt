@@ -85,7 +85,7 @@ class LoginPageFragment : Fragment() {
                 // Handle network failure
                 Toast.makeText(
                     requireContext(),
-                    "Network error. Please try again.",
+                    "Please try again.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
