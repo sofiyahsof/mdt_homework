@@ -14,7 +14,7 @@
             android:layout_width="397dp"
             android:layout_height="230dp"
             android:layout_marginTop="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginEnd="60dp"
             android:background="@drawable/box_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -133,6 +133,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="44dp"
             android:layout_marginBottom="32dp"
+            android:textSize="17sp"
             android:text="@string/make_transfer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
