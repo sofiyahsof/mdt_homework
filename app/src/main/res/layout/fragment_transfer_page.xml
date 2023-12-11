@@ -29,37 +29,106 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/payeeBox"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/edittext_border"
+            app:layout_constraintTop_toBottomOf="@id/transferTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/payeeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="17dp"
+            android:text="@string/payee"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="@id/payeeBox"
+            app:layout_constraintStart_toStartOf="@id/payeeBox"/>
+
+        <EditText
+            android:id="@+id/editTextPayee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_margin="10dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="@id/payeeBox"
+            app:layout_constraintTop_toBottomOf="@id/payeeTitle"/>
+
+        <TextView
+            android:id="@+id/amountBox"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/edittext_border"
+            app:layout_constraintTop_toBottomOf="@id/payeeBox"
+            app:layout_constraintStart_toStartOf="@id/payeeTitle" />
+
+        <TextView
+            android:id="@+id/amountTitle"
+            android:layout_width="match_parent"
+            android:layout_height="17dp"
+            android:text="@string/amount"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="@id/amountBox"
+            app:layout_constraintStart_toStartOf="@id/amountBox"/>
+
         <EditText
             android:id="@+id/editTextAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/edittext_border"
-            android:gravity="top|start"
-            android:hint="@string/amount"
-            android:textColorHint="#000000"
-            android:minHeight="65dp"
-            android:paddingStart="10dp"
-            android:paddingTop="3dp"
+            android:inputType="numberDecimal"
+            android:layout_margin="10dp"
             android:textColor="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/transferTitle" />
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="@id/amountBox"
+            app:layout_constraintTop_toBottomOf="@id/amountTitle"/>
+
+        <TextView
+            android:id="@+id/descriptionBox"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/edittext_border"
+            app:layout_constraintTop_toBottomOf="@id/amountBox"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="17dp"
+            android:text="@string/description"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="@id/descriptionBox"
+            app:layout_constraintStart_toStartOf="@id/descriptionBox"/>
 
         <EditText
             android:id="@+id/editTextDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/edittext_border"
-            android:gravity="top|start"
-            android:hint="Description"
-            android:textColorHint="#000000"
-            android:minHeight="120dp"
-            android:paddingStart="10dp"
-            android:paddingTop="3dp"
+            android:inputType="text"
+            android:layout_margin="10dp"
             android:textColor="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextAmount" />
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="@id/descriptionBox"
+            app:layout_constraintTop_toBottomOf="@id/descriptionTitle"/>
+
+        <TextView
+            android:id="@+id/textErrorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="17dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/descriptionBox"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBox"/>
 
         <Button
             android:id="@+id/buttonTransferNow"

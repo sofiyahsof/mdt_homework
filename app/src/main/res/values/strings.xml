@@ -14,4 +14,7 @@
     <string name="account_holder">Account Holder</string>
     <string name="your_transaction_history">Your transaction history</string>
     <string name="make_transfer">Make Transfer</string>
+    <string name="description">Description</string>
+    <string name="payee">Payee</string>
+    <string name="logout">Logout</string>
 </resources>

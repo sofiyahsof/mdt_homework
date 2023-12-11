@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.mdthomework.R
 import com.example.mdthomework.databinding.FragmentDashboardBinding
@@ -23,11 +27,11 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))
             .get(DashboardViewModel::class.java)
-
 
         // Observe balance changes
         viewModel.balance.observe(viewLifecycleOwner) { balanceResponse ->
@@ -49,10 +53,18 @@ class DashboardFragment : Fragment() {
 
         // Set click listener for the "Make Transfer" button
         binding.buttonMakeTransfer.setOnClickListener {
+            // Navigate to transfer page
             findNavController().navigate(R.id.action_dashboardFragment_to_transferPageFragment)
+        }
+
+        // Set click listener for the "Logout" button
+        binding.logoutButton.setOnClickListener {
+            // Navigate back to the login page
+            findNavController().navigate(R.id.action_dashboardFragment_to_loginPageFragment)
         }
 
         return binding.root
     }
+
 }
 

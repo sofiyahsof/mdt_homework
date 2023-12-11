@@ -13,17 +13,30 @@
             android:id="@+id/boxView"
             android:layout_width="397dp"
             android:layout_height="230dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="60dp"
             android:layout_marginRight="60dp"
             android:background="@drawable/box_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logout"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <TextView
             android:id="@+id/youHave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="85dp"
             android:paddingStart="30dp"
             android:text="@string/you_have"
             android:textSize="20sp"
@@ -88,7 +101,7 @@
         <View
             android:id="@+id/boxViewHistory"
             android:layout_width="349dp"
-            android:layout_height="269dp"
+            android:layout_height="250dp"
             android:layout_marginStart="28dp"
             android:background="@drawable/box_background"
             android:padding="30dp"
